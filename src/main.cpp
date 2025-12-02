@@ -26,7 +26,7 @@ int main() {
 
         output_file << "Frequência de palavras:\n";
         for(const auto& par : frequencia) {
-            output_file << par.first << ": " << par.second << "\n";
+            output_file << "'" << par.first << "'" << ": " << par.second << "\n";
         }
         output_file << "\n";
     }

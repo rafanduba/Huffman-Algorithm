@@ -15,7 +15,7 @@ std::vector<std::pair<std::string,int>>
 TextProcessor::contarPalavras(const std::string& texto)
 {
     std::unordered_map<std::string, int> contadorInterno;
-    std::vector<std::string> sequenciaTokens; 
+    std::vector<std::string> sequenciaTokens;
 
     std::string tokenAtual;
     for (char c : texto) {
@@ -24,6 +24,7 @@ TextProcessor::contarPalavras(const std::string& texto)
                 sequenciaTokens.push_back(tokenAtual);
                 tokenAtual.clear();
             }
+            sequenciaTokens.push_back(" ");
             continue;
         }
 
@@ -43,20 +44,22 @@ TextProcessor::contarPalavras(const std::string& texto)
     }
     
     std::vector<std::pair<std::string, int>> ordemResultado;
-
     for (const std::string& token : sequenciaTokens) {
         std::string tokenProcessado = token;
-        if (tokenProcessado.length() > 1 || !is_common_punctuation(tokenProcessado[0])) {
+
+        if (tokenProcessado != " " && 
+            (tokenProcessado.length() > 1 || !is_common_punctuation(tokenProcessado[0]))) 
+        {
             std::transform(tokenProcessado.begin(), tokenProcessado.end(), tokenProcessado.begin(), 
                            [](unsigned char c){ return std::tolower(c); });
         }
         
         contadorInterno[tokenProcessado]++;
+        
         if (contadorInterno[tokenProcessado] == 1) {
             ordemResultado.push_back({tokenProcessado, 1});
         }
     }
-
     for (auto& p : ordemResultado) {
         p.second = contadorInterno[p.first];
     }
