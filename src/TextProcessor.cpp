@@ -1,36 +1,65 @@
 #include "TextProcessor.hpp"
 #include <sstream>
 #include <algorithm>
+#include <cctype>
+#include <unordered_map>
+#include <vector>
+
+static bool is_common_punctuation(char c) {
+    return c == '.' || c == ',' || c == '!' || c == '?' || c == ':' || c == ';' ||
+           c == '"' || c == '\'' || c == '(' || c == ')' || c == '[' || c == ']' ||
+           c == '{' || c == '}';
+}
 
 std::vector<std::pair<std::string,int>>
 TextProcessor::contarPalavras(const std::string& texto)
 {
-    std::unordered_map<std::string,int> contadorInterno;
-    std::vector<std::pair<std::string,int>> ordem;
+    std::unordered_map<std::string, int> contadorInterno;
+    std::vector<std::string> sequenciaTokens; 
 
-    std::stringstream streamPalavras(texto);
-    std::string palavra;
+    std::string tokenAtual;
+    for (char c : texto) {
+        if (std::isspace(static_cast<unsigned char>(c))) {
+            if (!tokenAtual.empty()) {
+                sequenciaTokens.push_back(tokenAtual);
+                tokenAtual.clear();
+            }
+            continue;
+        }
 
-    while (streamPalavras >> palavra) {
+        if (is_common_punctuation(c)) {
+            if (!tokenAtual.empty()) {
+                sequenciaTokens.push_back(tokenAtual);
+                tokenAtual.clear();
+            }
+            sequenciaTokens.push_back(std::string(1, c));
+        } else {
+            tokenAtual += c;
+        }
+    }
+    
+    if (!tokenAtual.empty()) {
+        sequenciaTokens.push_back(tokenAtual);
+    }
+    
+    std::vector<std::pair<std::string, int>> ordemResultado;
 
-        while (!palavra.empty() && ispunct(palavra.front())) palavra.erase(0, 1);
-        while (!palavra.empty() && ispunct(palavra.back()))  palavra.pop_back();
-        std::transform(palavra.begin(), palavra.end(), palavra.begin(), ::tolower);
-
-        if (palavra.empty()) continue;
-
-        // primeira vez?
-        if (contadorInterno[palavra] == 0)
-            ordem.push_back({palavra, 1});
-        else
-            // já existe no vector, precisa achar e atualizar
-            for (auto& p : ordem)
-                if (p.first == palavra)
-                    p.second++;
-
-        contadorInterno[palavra]++;
+    for (const std::string& token : sequenciaTokens) {
+        std::string tokenProcessado = token;
+        if (tokenProcessado.length() > 1 || !is_common_punctuation(tokenProcessado[0])) {
+            std::transform(tokenProcessado.begin(), tokenProcessado.end(), tokenProcessado.begin(), 
+                           [](unsigned char c){ return std::tolower(c); });
+        }
+        
+        contadorInterno[tokenProcessado]++;
+        if (contadorInterno[tokenProcessado] == 1) {
+            ordemResultado.push_back({tokenProcessado, 1});
+        }
     }
 
-    return ordem;
-}
+    for (auto& p : ordemResultado) {
+        p.second = contadorInterno[p.first];
+    }
 
+    return ordemResultado;
+}

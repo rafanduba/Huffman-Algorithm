@@ -13,10 +13,12 @@ stone: 1
 of: 1
 hill: 1
 house: 1
+,: 2
 whatever: 1
 walked: 2
 there: 1
 alone: 1
+.: 1
 
 === Bloco 2 ===
 Forgiveness is warm. Like a tear on a cheek. Think of that and of me when you stand in the rain. I loved you completely. And you loved me the same. That is all. The rest is confetti.
@@ -25,6 +27,7 @@ Frequência de palavras:
 forgiveness: 1
 is: 3
 warm: 1
+.: 7
 like: 1
 a: 2
 tear: 1
@@ -69,4 +72,22 @@ them: 2
 worth: 1
 pain: 1
 losing: 1
+.: 1
+
+=== Bloco 4 ===
+cão benção hipopótamo cao bencao hipopotamo{} cão; vaca Cão. ; } . ``.
+
+Frequência de palavras:
+cão: 3
+benção: 1
+hipopótamo: 1
+cao: 1
+bencao: 1
+hipopotamo: 1
+{: 1
+}: 2
+;: 2
+vaca: 1
+.: 3
+``: 1
 
