@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-// Cada bloco (duas/três frases) será retornado como uma string no vector.
+//Retorna os blocos de texto lidos do input.dat
 class InputReader {
 public:
     std::vector<std::string> lerTextos(const std::string& caminhoArquivo);

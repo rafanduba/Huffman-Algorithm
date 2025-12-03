@@ -18,7 +18,9 @@ TextProcessor::contarPalavras(const std::string& texto)
     std::vector<std::string> sequenciaTokens;
 
     std::string tokenAtual;
+
     for (char c : texto) {
+
         if (std::isspace(static_cast<unsigned char>(c))) {
             if (!tokenAtual.empty()) {
                 sequenciaTokens.push_back(tokenAtual);
@@ -34,35 +36,64 @@ TextProcessor::contarPalavras(const std::string& texto)
                 tokenAtual.clear();
             }
             sequenciaTokens.push_back(std::string(1, c));
-        } else {
+        } 
+        else {
             tokenAtual += c;
         }
     }
-    
-    if (!tokenAtual.empty()) {
-        sequenciaTokens.push_back(tokenAtual);
-    }
-    
-    std::vector<std::pair<std::string, int>> ordemResultado;
-    for (const std::string& token : sequenciaTokens) {
-        std::string tokenProcessado = token;
 
-        if (tokenProcessado != " " && 
-            (tokenProcessado.length() > 1 || !is_common_punctuation(tokenProcessado[0]))) 
-        {
-            std::transform(tokenProcessado.begin(), tokenProcessado.end(), tokenProcessado.begin(), 
-                           [](unsigned char c){ return std::tolower(c); });
-        }
-        
-        contadorInterno[tokenProcessado]++;
-        
-        if (contadorInterno[tokenProcessado] == 1) {
-            ordemResultado.push_back({tokenProcessado, 1});
+    if (!tokenAtual.empty())
+        sequenciaTokens.push_back(tokenAtual);
+
+    std::vector<std::pair<std::string,int>> ordemResultado;
+
+    for (const std::string& token : sequenciaTokens) {
+
+        contadorInterno[token]++;
+
+        if (contadorInterno[token] == 1) {
+            ordemResultado.push_back({token, 1});
         }
     }
+    
     for (auto& p : ordemResultado) {
         p.second = contadorInterno[p.first];
     }
 
     return ordemResultado;
+}
+
+std::vector<std::string>
+TextProcessor::tokenizar(const std::string& texto)
+{
+    std::vector<std::string> tokens;
+    std::string tokenAtual;
+
+    for (char c : texto) {
+
+        if (std::isspace(static_cast<unsigned char>(c))) {
+            if (!tokenAtual.empty()) {
+                tokens.push_back(tokenAtual);
+                tokenAtual.clear();
+            }
+            tokens.push_back(" ");
+            continue;
+        }
+
+        if (is_common_punctuation(c)) {
+            if (!tokenAtual.empty()) {
+                tokens.push_back(tokenAtual);
+                tokenAtual.clear();
+            }
+            tokens.push_back(std::string(1, c));
+        }
+        else {
+            tokenAtual += c;
+        }
+    }
+
+    if (!tokenAtual.empty())
+        tokens.push_back(tokenAtual);
+
+    return tokens;
 }

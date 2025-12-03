@@ -1,8 +1,8 @@
 === Bloco 1 ===
 Silence lay steadily against the wood and stone of Hill House, and whatever walked there, walked alone.
 
-Frequência de palavras:
-'silence': 1
+1 - Frequência de tokens:
+'Silence': 1
 ' ': 16
 'lay': 1
 'steadily': 1
@@ -12,8 +12,8 @@ Frequência de palavras:
 'and': 2
 'stone': 1
 'of': 1
-'hill': 1
-'house': 1
+'Hill': 1
+'House': 1
 ',': 2
 'whatever': 1
 'walked': 2
@@ -21,50 +21,213 @@ Frequência de palavras:
 'alone': 1
 '.': 1
 
+2 - Estrutura da Árvore de Huffman:
+└── Interno (freq: 36)
+    ├── ' ' (freq: 16)
+    └── Interno (freq: 20)
+        ├── Interno (freq: 8)
+        │   ├── Interno (freq: 4)
+        │   │   ├── Interno (freq: 2)
+        │   │   │   ├── 'Silence' (freq: 1)
+        │   │   │   └── 'lay' (freq: 1)
+        │   │   └── ',' (freq: 2)
+        │   └── Interno (freq: 4)
+        │       ├── Interno (freq: 2)
+        │       │   ├── 'of' (freq: 1)
+        │       │   └── 'stone' (freq: 1)
+        │       └── Interno (freq: 2)
+        │           ├── '.' (freq: 1)
+        │           └── 'there' (freq: 1)
+        └── Interno (freq: 12)
+            ├── Interno (freq: 4)
+            │   ├── Interno (freq: 2)
+            │   │   ├── 'alone' (freq: 1)
+            │   │   └── 'the' (freq: 1)
+            │   └── Interno (freq: 2)
+            │       ├── 'House' (freq: 1)
+            │       └── 'steadily' (freq: 1)
+            └── Interno (freq: 8)
+                ├── Interno (freq: 4)
+                │   ├── 'walked' (freq: 2)
+                │   └── 'and' (freq: 2)
+                └── Interno (freq: 4)
+                    ├── Interno (freq: 2)
+                    │   ├── 'against' (freq: 1)
+                    │   └── 'Hill' (freq: 1)
+                    └── Interno (freq: 2)
+                        ├── 'wood' (freq: 1)
+                        └── 'whatever' (freq: 1)
+
+3 - Tabela de códigos (token → código):
+'whatever' -> 111111
+'wood' -> 111110
+'Hill' -> 111101
+'against' -> 111100
+'and' -> 11101
+'walked' -> 11100
+'House' -> 11010
+',' -> 1001
+'the' -> 11001
+'there' -> 10111
+'steadily' -> 11011
+'Silence' -> 10000
+' ' -> 0
+'.' -> 10110
+'of' -> 10100
+'stone' -> 10101
+'lay' -> 10001
+'alone' -> 11000
+
+4 - Texto comprimido (bits):
+1000001000101101101111000110010111110011101010101010100011110101101010010111010111111011100010111100101110001100010110
+
 === Bloco 2 ===
 Forgiveness is warm. Like a tear on a cheek. Think of that and of me when you stand in the rain. I loved you completely. And you loved me the same. That is all. The rest is confetti.
 
-Frequência de palavras:
-'forgiveness': 1
+1 - Frequência de tokens:
+'Forgiveness': 1
 ' ': 37
 'is': 3
 'warm': 1
 '.': 7
-'like': 1
+'Like': 1
 'a': 2
 'tear': 1
 'on': 1
 'cheek': 1
-'think': 1
+'Think': 1
 'of': 2
-'that': 2
-'and': 2
+'that': 1
+'and': 1
 'me': 2
 'when': 1
 'you': 3
 'stand': 1
 'in': 1
-'the': 3
+'the': 2
 'rain': 1
-'i': 1
+'I': 1
 'loved': 2
 'completely': 1
+'And': 1
 'same': 1
+'That': 1
 'all': 1
+'The': 1
 'rest': 1
 'confetti': 1
+
+2 - Estrutura da Árvore de Huffman:
+└── Interno (freq: 82)
+    ├── ' ' (freq: 37)
+    └── Interno (freq: 45)
+        ├── Interno (freq: 16)
+        │   ├── Interno (freq: 8)
+        │   │   ├── Interno (freq: 4)
+        │   │   │   ├── 'the' (freq: 2)
+        │   │   │   └── Interno (freq: 2)
+        │   │   │       ├── 'warm' (freq: 1)
+        │   │   │       └── 'cheek' (freq: 1)
+        │   │   └── Interno (freq: 4)
+        │   │       ├── Interno (freq: 2)
+        │   │       │   ├── 'stand' (freq: 1)
+        │   │       │   └── 'when' (freq: 1)
+        │   │       └── Interno (freq: 2)
+        │   │           ├── 'Forgiveness' (freq: 1)
+        │   │           └── 'Like' (freq: 1)
+        │   └── Interno (freq: 8)
+        │       ├── Interno (freq: 4)
+        │       │   ├── 'of' (freq: 2)
+        │       │   └── Interno (freq: 2)
+        │       │       ├── 'Think' (freq: 1)
+        │       │       └── 'I' (freq: 1)
+        │       └── Interno (freq: 4)
+        │           ├── Interno (freq: 2)
+        │           │   ├── 'confetti' (freq: 1)
+        │           │   └── 'all' (freq: 1)
+        │           └── 'loved' (freq: 2)
+        └── Interno (freq: 29)
+            ├── Interno (freq: 13)
+            │   ├── Interno (freq: 6)
+            │   │   ├── 'is' (freq: 3)
+            │   │   └── 'you' (freq: 3)
+            │   └── '.' (freq: 7)
+            └── Interno (freq: 16)
+                ├── Interno (freq: 8)
+                │   ├── Interno (freq: 4)
+                │   │   ├── 'me' (freq: 2)
+                │   │   └── Interno (freq: 2)
+                │   │       ├── 'and' (freq: 1)
+                │   │       └── 'rest' (freq: 1)
+                │   └── Interno (freq: 4)
+                │       ├── Interno (freq: 2)
+                │       │   ├── 'The' (freq: 1)
+                │       │   └── 'that' (freq: 1)
+                │       └── Interno (freq: 2)
+                │           ├── 'rain' (freq: 1)
+                │           └── 'tear' (freq: 1)
+                └── Interno (freq: 8)
+                    ├── Interno (freq: 4)
+                    │   ├── Interno (freq: 2)
+                    │   │   ├── 'completely' (freq: 1)
+                    │   │   └── 'And' (freq: 1)
+                    │   └── Interno (freq: 2)
+                    │       ├── 'on' (freq: 1)
+                    │       └── 'in' (freq: 1)
+                    └── Interno (freq: 4)
+                        ├── Interno (freq: 2)
+                        │   ├── 'same' (freq: 1)
+                        │   └── 'That' (freq: 1)
+                        └── 'a' (freq: 2)
+
+3 - Tabela de códigos (token → código):
+'That' -> 1111101
+'same' -> 1111100
+'And' -> 1111001
+'completely' -> 1111000
+'in' -> 1111011
+'tear' -> 1110111
+'rain' -> 1110110
+'of' -> 10100
+'I' -> 101011
+'Like' -> 100111
+'Think' -> 101010
+'a' -> 111111
+'when' -> 100101
+'The' -> 1110100
+' ' -> 0
+'is' -> 11000
+'warm' -> 100010
+'the' -> 10000
+'cheek' -> 100011
+'confetti' -> 101100
+'loved' -> 10111
+'you' -> 11001
+'Forgiveness' -> 100110
+'all' -> 101101
+'.' -> 1101
+'that' -> 1110101
+'on' -> 1111010
+'me' -> 111000
+'and' -> 1110010
+'stand' -> 100100
+'rest' -> 1110011
+
+4 - Texto comprimido (bits):
+10011001100001000101101010011101111110111011101111010011111101000111101010101001010001110101011100100101000111000010010101100101001000111101101000001110110110101010110101110110010111100011010111100101100101011101110000100000111110011010111110101100001011011101011101000111001101100001011001101
 
 === Bloco 3 ===
 To truly love another person is to accept that the work of loving them is worth the pain of losing them.
 
-Frequência de palavras:
-'to': 2
+1 - Frequência de tokens:
+'To': 1
 ' ': 20
 'truly': 1
 'love': 1
 'another': 1
 'person': 1
 'is': 2
+'to': 1
 'accept': 1
 'that': 1
 'the': 2
@@ -77,11 +240,74 @@ Frequência de palavras:
 'losing': 1
 '.': 1
 
+2 - Estrutura da Árvore de Huffman:
+└── Interno (freq: 42)
+    ├── ' ' (freq: 20)
+    └── Interno (freq: 22)
+        ├── Interno (freq: 8)
+        │   ├── Interno (freq: 4)
+        │   │   ├── Interno (freq: 2)
+        │   │   │   ├── 'that' (freq: 1)
+        │   │   │   └── 'to' (freq: 1)
+        │   │   └── 'of' (freq: 2)
+        │   └── Interno (freq: 4)
+        │       ├── Interno (freq: 2)
+        │       │   ├── 'losing' (freq: 1)
+        │       │   └── 'person' (freq: 1)
+        │       └── 'the' (freq: 2)
+        └── Interno (freq: 14)
+            ├── Interno (freq: 6)
+            │   ├── Interno (freq: 2)
+            │   │   ├── 'love' (freq: 1)
+            │   │   └── 'another' (freq: 1)
+            │   └── Interno (freq: 4)
+            │       ├── 'them' (freq: 2)
+            │       └── Interno (freq: 2)
+            │           ├── 'To' (freq: 1)
+            │           └── 'truly' (freq: 1)
+            └── Interno (freq: 8)
+                ├── Interno (freq: 4)
+                │   ├── Interno (freq: 2)
+                │   │   ├── 'loving' (freq: 1)
+                │   │   └── '.' (freq: 1)
+                │   └── Interno (freq: 2)
+                │       ├── 'accept' (freq: 1)
+                │       └── 'worth' (freq: 1)
+                └── Interno (freq: 4)
+                    ├── Interno (freq: 2)
+                    │   ├── 'work' (freq: 1)
+                    │   └── 'pain' (freq: 1)
+                    └── 'is' (freq: 2)
+
+3 - Tabela de códigos (token → código):
+'pain' -> 111101
+'truly' -> 110111
+'To' -> 110110
+'to' -> 10001
+'work' -> 111100
+'worth' -> 111011
+'accept' -> 111010
+'.' -> 111001
+'that' -> 10000
+'losing' -> 10100
+'of' -> 1001
+'is' -> 11111
+' ' -> 0
+'the' -> 1011
+'loving' -> 111000
+'love' -> 11000
+'another' -> 11001
+'person' -> 10101
+'them' -> 11010
+
+4 - Texto comprimido (bits):
+11011001101110110000110010101010111110100010111010010000010110111100010010111000011010011111011101101011011110101001010100011010111001
+
 === Bloco 4 ===
 cão benção hipopótamo cao bencao hipopotamo{} cão; vaca Cão. ; } . ``.
 
-Frequência de palavras:
-'cão': 3
+1 - Frequência de tokens:
+'cão': 2
 ' ': 12
 'benção': 1
 'hipopótamo': 1
@@ -92,6 +318,102 @@ Frequência de palavras:
 '}': 2
 ';': 2
 'vaca': 1
+'Cão': 1
 '.': 3
 '``': 1
+
+2 - Estrutura da Árvore de Huffman:
+└── Interno (freq: 30)
+    ├── ' ' (freq: 12)
+    └── Interno (freq: 18)
+        ├── Interno (freq: 8)
+        │   ├── Interno (freq: 4)
+        │   │   ├── Interno (freq: 2)
+        │   │   │   ├── 'hipopotamo' (freq: 1)
+        │   │   │   └── '``' (freq: 1)
+        │   │   └── '}' (freq: 2)
+        │   └── Interno (freq: 4)
+        │       ├── Interno (freq: 2)
+        │       │   ├── 'Cão' (freq: 1)
+        │       │   └── 'hipopótamo' (freq: 1)
+        │       └── ';' (freq: 2)
+        └── Interno (freq: 10)
+            ├── Interno (freq: 4)
+            │   ├── Interno (freq: 2)
+            │   │   ├── 'benção' (freq: 1)
+            │   │   └── 'bencao' (freq: 1)
+            │   └── Interno (freq: 2)
+            │       ├── 'cao' (freq: 1)
+            │       └── 'vaca' (freq: 1)
+            └── Interno (freq: 6)
+                ├── '.' (freq: 3)
+                └── Interno (freq: 3)
+                    ├── '{' (freq: 1)
+                    └── 'cão' (freq: 2)
+
+3 - Tabela de códigos (token → código):
+'cão' -> 11111
+'{' -> 11110
+'vaca' -> 11011
+'hipopotamo' -> 10000
+'``' -> 10001
+'Cão' -> 10100
+' ' -> 0
+'hipopótamo' -> 10101
+'.' -> 1110
+'cao' -> 11010
+';' -> 1011
+'}' -> 1001
+'benção' -> 11000
+'bencao' -> 11001
+
+4 - Texto comprimido (bits):
+11111011000010101011010011001010000111101001011111101101101101010011100101101001011100100011110
+
+=== Bloco 5 ===
+planeta Planeta Planeta planeta. garrafa, garrafa Garrafa Garrafa Garrafa carro. carro Carro..
+
+1 - Frequência de tokens:
+'planeta': 2
+' ': 11
+'Planeta': 2
+'.': 4
+'garrafa': 2
+',': 1
+'Garrafa': 3
+'carro': 2
+'Carro': 1
+
+2 - Estrutura da Árvore de Huffman:
+└── Interno (freq: 28)
+    ├── ' ' (freq: 11)
+    └── Interno (freq: 17)
+        ├── Interno (freq: 8)
+        │   ├── Interno (freq: 4)
+        │   │   ├── Interno (freq: 2)
+        │   │   │   ├── ',' (freq: 1)
+        │   │   │   └── 'Carro' (freq: 1)
+        │   │   └── 'garrafa' (freq: 2)
+        │   └── '.' (freq: 4)
+        └── Interno (freq: 9)
+            ├── Interno (freq: 4)
+            │   ├── 'planeta' (freq: 2)
+            │   └── 'Planeta' (freq: 2)
+            └── Interno (freq: 5)
+                ├── 'carro' (freq: 2)
+                └── 'Garrafa' (freq: 3)
+
+3 - Tabela de códigos (token → código):
+'Garrafa' -> 1111
+'carro' -> 1110
+'planeta' -> 1100
+'Planeta' -> 1101
+'garrafa' -> 1001
+',' -> 10000
+'.' -> 101
+' ' -> 0
+'Carro' -> 10001
+
+4 - Texto comprimido (bits):
+11000110101101011001010100110000010010111101111011110111010101110010001101101
 
