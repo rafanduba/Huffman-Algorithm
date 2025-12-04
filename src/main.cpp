@@ -38,16 +38,14 @@ int main() {
         auto codigos = Huffman::gerarCodigos(raiz);
 
         output_file << "2 - Estrutura da Árvore de Huffman:\n";
-        Huffman::imprimirArvore(raiz,codigos, output_file);
-        output_file << "\n";
-
-        output_file << "3 - Tabela de códigos (token → código):\n";
-        for(const auto& p : codigos) {
-            output_file << "'" << p.first << "' -> " << p.second << "\n";
-        }
+        Huffman::imprimirArvore(raiz, codigos, output_file);
         output_file << "\n";
 
         std::vector<std::string> tokensSequencia = TextProcessor::tokenizar(textos[i]);
+
+        output_file << "3 - Tabela de códigos (na ordem da frase):\n";
+        Huffman::imprimirTabelaNaOrdemDaFrase(tokensSequencia, codigos, output_file);
+        output_file << "\n";
 
         std::string textoComprimido = Huffman::comprimir(tokensSequencia, codigos);
 

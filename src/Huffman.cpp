@@ -1,6 +1,7 @@
 #include "Huffman.hpp"
 #include <queue>
 #include <iostream>
+#include <unordered_set>
 
 std::shared_ptr<HuffmanNode>
 Huffman::construirArvore(const std::vector<std::pair<std::string,int>>& tokensFreq) {
@@ -97,4 +98,20 @@ void Huffman::imprimirArvoreRec(const std::shared_ptr<HuffmanNode>& nodo, const 
 
     if (nodo->right)
         imprimirArvoreRec(nodo->right, novoPrefixo, false, codigos, out);
+}
+
+void Huffman::imprimirTabelaNaOrdemDaFrase(const std::vector<std::string>& tokens, const std::unordered_map<std::string, std::string>& codigos, std::ostream& out){
+    std::unordered_set<std::string> jaImpresso;
+
+    out << "\n=== Tabela de Códigos (na ordem da frase) ===\n";
+
+    for (const auto& tk : tokens) {
+        if (jaImpresso.count(tk)) continue;
+
+        auto it = codigos.find(tk);
+        if (it != codigos.end()) {
+            out << "'" << tk << "' -> " << it->second << "\n";
+            jaImpresso.insert(tk);
+        }
+    }
 }

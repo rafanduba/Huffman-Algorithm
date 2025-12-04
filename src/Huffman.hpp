@@ -30,8 +30,9 @@ static std::unordered_map<std::string,std::string> gerarCodigos(const std::share
 
 static std::string comprimir(const std::vector<std::string>& tokens,const std::unordered_map<std::string,std::string>& codigos);
 
-static void imprimirArvore(const std::shared_ptr<HuffmanNode>& raiz, const std::unordered_map<std::string, std::string>& codigos, std::ostream& out
-    );
+static void imprimirArvore(const std::shared_ptr<HuffmanNode>& raiz, const std::unordered_map<std::string, std::string>& codigos, std::ostream& out);
+
+static void imprimirTabelaNaOrdemDaFrase(const std::vector<std::string>& tokens, const std::unordered_map<std::string, std::string>& codigos, std::ostream& out);
 
 private:
 static void gerarCodigosRec(const std::shared_ptr<HuffmanNode>& nodo, const std::string& codigoAtual, std::unordered_map<std::string,std::string>& mapa);
