@@ -25,7 +25,7 @@ README.md
 
 ## 🧠 Funcionamento do Algoritmo
 - Lê um número n de frases do arquivo input.dat, presente na pasta "data"
-- Transforma palavras e pontuação em tokens
+- Transforma palavras, pontuação e espaços em branco em tokens
 - Calcula a frequência em que cada token aparece em cada uma das frases
 - Monta uma árvore de Huffman baseado nas frequências
 - Gera códigos binários para cada um dos tokens (curtos para os mais comuns, longos para os que aparecem menos)
@@ -34,9 +34,9 @@ README.md
 
 ## ‼️ Considerações importantes
 - Palavras iguais com variações de letras minúsculas e maiúsculas foram tratadas como tokens diferentes para preservar a frase original no processo de decodificação
-- Mesmo que pontuações estejam juntos a palavras na frase, foram separados durante a codificação para contarem como tokens diferentes. Ex.: 'Casa!" -> 'Casa' ,  '!'
+- Mesmo que pontuações estejam junto a palavras na frase, foram separados durante a codificação para contarem como tokens diferentes. Ex.: 'Casa!" -> 'Casa' ,  '!'
 - Pontuações e espaços em branco foram considerados como tokens e aparecem na estrutura da árvore
-- As frases recomendadas para teste estão no arquivo "input.dat"
+- As frases recomendadas para teste estão no arquivo "input.dat" e podem ser alteradas
 
 
 ## 🚀 Como usar
@@ -44,6 +44,7 @@ README.md
 ### Importar projeto
 ```
 git clone https://github.com/rafanduba/Huffman-Algorithm.git
+cd Huffman-Algorithm
 ```
 No terminal, usando g++:
 ### Compilar
