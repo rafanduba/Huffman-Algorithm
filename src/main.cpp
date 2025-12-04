@@ -10,6 +10,7 @@
 int main() {
     InputReader reader;
 
+    // Lê blocos de texto do arquivo de entrada
     std::vector<std::string> textos = reader.lerTextos("../data/input.dat");
 
     std::ofstream output_file("../data/output.dat");
@@ -23,9 +24,11 @@ int main() {
 
     for(size_t i = 0; i < textos.size(); i++) {
 
+        // Imprime o bloco original
         output_file << "=== Bloco " << i+1 << " ===\n";
         output_file << textos[i] << "\n\n";
 
+        // Frequência dos tokens
         auto frequencia = TextProcessor::contarPalavras(textos[i]);
 
         output_file << "1 - Frequência de tokens:\n";
@@ -34,6 +37,7 @@ int main() {
         }
         output_file << "\n";
 
+        // Constrói árvore e gera códigos
         auto raiz = Huffman::construirArvore(frequencia);
         auto codigos = Huffman::gerarCodigos(raiz);
 
@@ -41,12 +45,14 @@ int main() {
         Huffman::imprimirArvore(raiz, codigos, output_file);
         output_file << "\n";
 
+        // Tokenização preservando ordem original
         std::vector<std::string> tokensSequencia = TextProcessor::tokenizar(textos[i]);
 
         output_file << "3 - Tabela de códigos (na ordem da frase):\n";
         Huffman::imprimirTabelaNaOrdemDaFrase(tokensSequencia, codigos, output_file);
         output_file << "\n";
 
+        // Gera string comprimida
         std::string textoComprimido = Huffman::comprimir(tokensSequencia, codigos);
 
         output_file << "4 - Texto comprimido (bits):\n";
