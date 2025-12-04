@@ -1,5 +1,59 @@
-próximos passos:
-- palavras em portugues (com acentos, cedilha)
-- organizar as palavras na ordem em que aparecem
-- imprimir num arquivo output
-- 
+# Huffman Algorithm
+
+## 📘 Sobre o projeto
+Este repositório contém uma implementação do algoritmo de Huffman, um dos métodos clássicos para compressão de dados sem perda de informação.
+O objetivo é ler textos, analisar a frequência dos caracteres e gerar uma versão comprimida usando códigos binários mais curtos para símbolos frequentes.
+
+## 📂 Estrutura do projeto
+
+```
+data/
+├── input.dat
+├── output.dat (a ser gerado pelo programa)
+
+src/
+├── Huffman.cpp
+├── Huffman.hpp
+├── InputReader.cpp
+├── InputReader.hpp
+├── main.cpp
+├── TextProcessor.cpp
+└── TextProcessor.hpp
+
+README.md
+```
+
+## 🧠 Funcionamento do Algoritmo
+- Lê um número n de frases do arquivo input.dat, presente na pasta "data"
+- Transforma palavras e pontuação em tokens
+- Calcula a frequência em que cada token aparece em cada uma das frases
+- Monta uma árvore de Huffman baseado nas frequências
+- Gera códigos binários para cada um dos tokens (curtos para os mais comuns, longos para os que aparecem menos)
+- Comprime o texto, substituindo tokens por seu equivalente em binário
+- Para cada frase, são impressos a frequência de seus tokens, a estrutura correspondente da árvore de Huffman, a tabela de códigos de cada token e o texto final comprimido no arquivo output.dat, presente na pasta "data"
+
+## ‼️ Considerações importantes
+- Palavras iguais com variações de letras minúsculas e maiúsculas foram tratadas como tokens diferentes para preservar a frase original no processo de decodificação
+- Mesmo que pontuações estejam juntos a palavras na frase, foram separados durante a codificação para contarem como tokens diferentes. Ex.: 'Casa!" -> 'Casa' ,  '!'
+- Pontuações e espaços em branco foram considerados como tokens e aparecem na estrutura da árvore
+- As frases recomendadas para teste estão no arquivo "input.dat"
+
+
+## 🚀 Como usar
+
+### Importar projeto
+```
+git clone https://github.com/rafanduba/Huffman-Algorithm.git
+```
+No terminal, usando g++:
+### Compilar
+```
+cd src
+g++ main.cpp InputReader.cpp Huffman.cpp TextProcessor.cpp -o main
+```
+### Rodar
+```
+./main
+```
+
+
