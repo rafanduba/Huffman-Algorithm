@@ -38,7 +38,7 @@ int main() {
         auto codigos = Huffman::gerarCodigos(raiz);
 
         output_file << "2 - Estrutura da Árvore de Huffman:\n";
-        Huffman::imprimirArvore(raiz, output_file);
+        Huffman::imprimirArvore(raiz,codigos, output_file);
         output_file << "\n";
 
         output_file << "3 - Tabela de códigos (token → código):\n";

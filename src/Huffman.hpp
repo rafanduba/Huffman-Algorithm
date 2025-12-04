@@ -21,20 +21,23 @@ struct CompareNodes {
     }
 };
 
+
 class Huffman {
 public:
-    static std::shared_ptr<HuffmanNode> construirArvore(const std::vector<std::pair<std::string,int>>& tokensFreq);
+static std::shared_ptr<HuffmanNode> construirArvore(const std::vector<std::pair<std::string,int>>& tokensFreq);
 
-    static std::unordered_map<std::string,std::string> gerarCodigos(const std::shared_ptr<HuffmanNode>& raiz);
+static std::unordered_map<std::string,std::string> gerarCodigos(const std::shared_ptr<HuffmanNode>& raiz);
 
-    static std::string comprimir(const std::vector<std::string>& tokens,const std::unordered_map<std::string,std::string>& codigos);
+static std::string comprimir(const std::vector<std::string>& tokens,const std::unordered_map<std::string,std::string>& codigos);
 
-    static void imprimirArvore(const std::shared_ptr<HuffmanNode>& raiz, std::ostream& out);
+static void imprimirArvore(const std::shared_ptr<HuffmanNode>& raiz, const std::unordered_map<std::string, std::string>& codigos, std::ostream& out
+    );
 
 private:
-    static void gerarCodigosRec(const std::shared_ptr<HuffmanNode>& nodo, const std::string& codigoAtual, std::unordered_map<std::string,std::string>& mapa);
+static void gerarCodigosRec(const std::shared_ptr<HuffmanNode>& nodo, const std::string& codigoAtual, std::unordered_map<std::string,std::string>& mapa);
 
-    static void imprimirArvoreRec(const std::shared_ptr<HuffmanNode>& nodo, const std::string& prefixo, bool isLeft, std::ostream& out);
+static void imprimirArvoreRec(const std::shared_ptr<HuffmanNode>& nodo, const std::string& prefixo, bool isLeft, const std::unordered_map<std::string, std::string>& codigos, std::ostream& out
+    );
 };
 
 #endif

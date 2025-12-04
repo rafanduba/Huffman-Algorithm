@@ -5,10 +5,7 @@
 std::shared_ptr<HuffmanNode>
 Huffman::construirArvore(const std::vector<std::pair<std::string,int>>& tokensFreq) {
 
-    std::priority_queue<
-        std::shared_ptr<HuffmanNode>,
-        std::vector<std::shared_ptr<HuffmanNode>>,
-        CompareNodes
+    std::priority_queue<std::shared_ptr<HuffmanNode>, std::vector<std::shared_ptr<HuffmanNode>>, CompareNodes
     > fila;
 
     for (const auto& par : tokensFreq) {
@@ -43,9 +40,7 @@ Huffman::gerarCodigos(const std::shared_ptr<HuffmanNode>& raiz) {
     return tabela;
 }
 
-void Huffman::gerarCodigosRec(const std::shared_ptr<HuffmanNode>& nodo,
-                              const std::string& codigoAtual,
-                              std::unordered_map<std::string,std::string>& mapa)
+void Huffman::gerarCodigosRec(const std::shared_ptr<HuffmanNode>& nodo, const std::string& codigoAtual, std::unordered_map<std::string,std::string>& mapa)
 {
     if (!nodo) return;
 
@@ -70,12 +65,16 @@ std::string Huffman::comprimir(const std::vector<std::string>& tokens, const std
     return out;
 }
 
-//Imprime a árvore
-void Huffman::imprimirArvore(const std::shared_ptr<HuffmanNode>& raiz, std::ostream& out){
-    imprimirArvoreRec(raiz, "", false, out);
+
+void Huffman::imprimirArvore(
+    const std::shared_ptr<HuffmanNode>& raiz,
+    const std::unordered_map<std::string, std::string>& codigos, std::ostream& out
+){
+    imprimirArvoreRec(raiz, "", false, codigos, out);
 }
 
-void Huffman::imprimirArvoreRec(const std::shared_ptr<HuffmanNode>& nodo, const std::string& prefixo, bool isLeft, std::ostream& out){
+void Huffman::imprimirArvoreRec(const std::shared_ptr<HuffmanNode>& nodo, const std::string& prefixo, bool isLeft, const std::unordered_map<std::string,std::string>& codigos, std::ostream& out
+){
     if (!nodo) return;
 
     out << prefixo;
@@ -83,7 +82,10 @@ void Huffman::imprimirArvoreRec(const std::shared_ptr<HuffmanNode>& nodo, const 
     out << (isLeft ? "├── " : "└── ");
 
     if (nodo->left == nullptr && nodo->right == nullptr) {
-        out << "'" << nodo->token << "' (freq: " << nodo->freq << ")\n";
+        auto it = codigos.find(nodo->token);
+        std::string codigo = (it != codigos.end()) ? it->second : "N/A";
+
+        out << "'" << nodo->token << "' (freq: " << nodo->freq << ", cod: " << codigo << ")\n";
     } else {
         out << "Interno (freq: " << nodo->freq << ")\n";
     }
@@ -91,8 +93,8 @@ void Huffman::imprimirArvoreRec(const std::shared_ptr<HuffmanNode>& nodo, const 
     std::string novoPrefixo = prefixo + (isLeft ? "│   " : "    ");
 
     if (nodo->left)
-        imprimirArvoreRec(nodo->left, novoPrefixo, true, out);
+        imprimirArvoreRec(nodo->left, novoPrefixo, true, codigos, out);
 
     if (nodo->right)
-        imprimirArvoreRec(nodo->right, novoPrefixo, false, out);
+        imprimirArvoreRec(nodo->right, novoPrefixo, false, codigos, out);
 }
